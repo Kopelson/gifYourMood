@@ -38,6 +38,7 @@ function jokeApiQuery(){
 //Pexel API Documentation https://www.pexels.com/api/documentation/
 //turtorial on pexel use in the browser https://www.youtube.com/watch?v=d1Nke7twxMM
 function pexelApiQuery(search){
+    //we can put any string as the search to get photos
     let query = "?query=";
     let perPage = "per_page=4";
     let page = "page=1";
@@ -72,10 +73,24 @@ function pexelApiQuery(search){
 
 //Giphy 
 //Giphy API Documentation https://developers.giphy.com/docs/api#quick-start-guide
-// function giphyApiQuery(){
-//     let giphyApiKey = "1RtzRKPjjkz1zLpVge9zotETQENJDzjR";
+function giphyApiQuery(search){
+    let giphyApiKey = "api_key=1RtzRKPjjkz1zLpVge9zotETQENJDzjR";
+    let url = "https://api.giphy.com/v1/gifs/search?";
+    //string req - search a query term or phrase
+    let query = "q="
+    //integer(int32) - defaults to 25
+    //let limit = "limit="
+    //integer(int32) - defaults to 0
+    //let offset = "offset="
+    //string - filters results by specified rating g, pg, pg-13, r
+    //let rating = "rating="
+    //each option after is separated by a "&"
+    let and = "&"
+    let queryUrl = url + giphyApiKey + and + query + search;
 
-// }
+    ajaxRequest(queryUrl);
+
+};
 
 
 //this function will make all ajax request
@@ -93,3 +108,5 @@ function ajaxRequest(queryUrl){
 
 //test response
 jokeApiQuery();
+pexelApiQuery("popcorn");
+giphyApiQuery("popcorn");
