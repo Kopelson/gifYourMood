@@ -36,10 +36,39 @@ function jokeApiQuery(){
 
 //Pexels	Free Stock Photos and Videos	
 //Pexel API Documentation https://www.pexels.com/api/documentation/
+//turtorial on pexel use in the browser https://www.youtube.com/watch?v=d1Nke7twxMM
+function pexelApiQuery(search){
+    let query = "?query=";
+    let perPage = "per_page=4";
+    let page = "page=1";
+    let pexelsApiKey = "563492ad6f91700001000001a7186190942c4e13817d5ad0d55b7ade";
+    let url = "https://api.pexels.com/v1/search";
+    let and = "&"
+    let queryUrl = url + query + search + and + perPage + and + page;
 
-// function pexelApiQuery(){
-//     let pexelsApiKey = "563492ad6f91700001000001a7186190942c4e13817d5ad0d55b7ade";
-// }
+    $.ajax({
+        url: queryUrl,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader( "Authorization", pexelsApiKey);
+        },
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+    }, function(error){
+        console.log(error);
+    });
+
+    // You have to link the photo back to pexels by using 
+    //  <a href="https://www.pexels.com">Photos provided by Pexels</a>
+    //      <!-- or show our white logo -->
+    //  <a href="https://www.pexels.com">
+    //  <img src="https://images.pexels.com/lib/api/pexels-white.png" />
+    //  </a>
+    //      <!-- or show our black logo -->
+    //  <a href="https://www.pexels.com">
+    //  <img src="https://images.pexels.com/lib/api/pexels.png" />
+    //  </a>
+};
 
 //Giphy 
 //Giphy API Documentation https://developers.giphy.com/docs/api#quick-start-guide
@@ -47,7 +76,6 @@ function jokeApiQuery(){
 //     let giphyApiKey = "1RtzRKPjjkz1zLpVge9zotETQENJDzjR";
 
 // }
-
 
 
 //this function will make all ajax request
