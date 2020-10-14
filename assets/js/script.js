@@ -55,6 +55,9 @@ function pexelApiQuery(search){
         method: "GET"
     }).then(function(response){
         console.log(response);
+        var testingDiv = $("#testing");
+        testingDiv.attr("src", response.photos[0].src.medium);
+
     }, function(error){
         console.log(error);
     });
@@ -106,7 +109,20 @@ function ajaxRequest(queryUrl){
 
 };
 
+$("#sadBtn").on("click", function(){
+    choiceOfMood("sad");
+})
+
+$("#happyBtn").on("click", function(){
+    choiceOfMood("happy");
+})
+
+//Determine the choice the user made
+function choiceOfMood(choice){
+    pexelApiQuery(choice);
+}
+
 //test response
 jokeApiQuery();
-pexelApiQuery("popcorn");
+pexelApiQuery("sad");
 giphyApiQuery("popcorn");
