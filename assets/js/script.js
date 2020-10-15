@@ -110,6 +110,6 @@ function ajaxRequest(queryUrl){
 };
 
 //test response
-jokeApiQuery();
-pexelApiQuery("sad");
-giphyApiQuery("popcorn");
+// jokeApiQuery();
+// pexelApiQuery("popcorn");
+// giphyApiQuery("popcorn");
