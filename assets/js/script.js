@@ -165,6 +165,24 @@ $("#modal-picture").on("click", "a", function(event){
     giphyApiQuery("happy");
 });
 
+//Store the gif in an array in localstorage
+$("#like").on("click", function(event){
+    if(!localStorage.getItem("gifs"))                               //If storage hasn't been initialized
+    {
+        let gifArr = [];
+        gifArr.push($("#gif").attr("src"));
+        localStorage.setItem("gifs", JSON.stringify(gifArr));       
+    }
+    else
+    {
+        let gifArr = JSON.parse(localStorage.getItem("gifs"));      //extract the array of gifs from local storage
+        gifArr.push($("#gif").attr("src"));
+        localStorage.setItem("gifs", JSON.stringify(gifArr));     
+    }
+
+    resetElements();
+});
+
 /****************************/
 //test response
 // jokeApiQuery();
