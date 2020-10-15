@@ -38,7 +38,7 @@ function jokeApiQuery(){
 function pexelApiQuery(search){
     //we can put any string as the search to get photos
     let query = "?query=";
-    let perPage = "per_page=4";
+    let perPage = "per_page=80";
     let page = "page=1";
     let pexelsApiKey = "563492ad6f91700001000001a7186190942c4e13817d5ad0d55b7ade";
     let url = "https://api.pexels.com/v1/search";
@@ -52,7 +52,16 @@ function pexelApiQuery(search){
         },
         method: "GET"
     }).then(function(response){
-        pexelResponse = response;
+        let picArr = response.photos;
+        for(var i = 1; i <= 4; i++)                                             //Iterate through 4 picture elements and set src attribute for each element
+        {
+            let index = Math.floor(Math.random()*picArr.length);
+            let randomPic = picArr[index];                                      //Pick a random picture from the response
+            picArr.splice(index, 1);                                            //remove selected picture from the array
+
+            let id = "picture" + i;
+            $("#"+id).children("img").attr("src", randomPic.src.tiny);
+        }
     }, function(error){
         console.log(error);
     });
@@ -90,6 +99,12 @@ function giphyApiQuery(search){
         url: queryUrl,
         method: "GET"
     }).then(function(response){
+        for(var i = 1; i<=4; i++)
+        {
+            let id = "picture" + i;
+            $("#"+id).children("img").attr("src", "");
+        }
+
         let gifArr = response.data;
         let randomGif = gifArr[Math.floor(Math.random()*gifArr.length)];    //pick a random gif
         $("#gif").attr("src", randomGif.images.original.url);
@@ -117,15 +132,25 @@ function ajaxRequest(queryUrl){
 /****************************/
 //Event handling functions
 
+//Choosing a joke return 4 pictures
+$("#modal-jokes").on("click", "a", function(event){
+    event.preventDefault();
+
+    //This is for testing purpose
+    //The parameter will be updated
+    pexelApiQuery("popcorn");
+});
+
 //Choosing a picture return a gif
 $("#modal-picture").on("click", "a", function(event){
     event.preventDefault();
 
     //This is for testing purpose
-    //The parameter will be updated to take a word from picture and joke chosen
+    //The parameter will be updated
     giphyApiQuery("happy");
 });
 
+/****************************/
 //test response
 // jokeApiQuery();
 // pexelApiQuery("popcorn");
