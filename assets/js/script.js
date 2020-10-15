@@ -1,5 +1,3 @@
-
-
 //JokeAPI	Programming, Miscellaneous and Dark Jokes
 //JokeAPI  documentation https://sv443.net/jokeapi/v2/
 //Doesn't use API keys
@@ -54,10 +52,7 @@ function pexelApiQuery(search){
         },
         method: "GET"
     }).then(function(response){
-        console.log(response);
-        var testingDiv = $("#testing");
-        testingDiv.attr("src", response.photos[0].src.medium);
-
+        pexelResponse = response;
     }, function(error){
         console.log(error);
     });
@@ -102,14 +97,11 @@ function ajaxRequest(queryUrl){
         url: queryUrl,
         method: "GET"
     }).then(function(response){
-        console.log(response);
+        ajaxResponse = response;
+        console.log(ajaxResponse);
     }, function(error){
         console.log(error);
     });
 
 };
 
-//test response
-jokeApiQuery();
-pexelApiQuery("sad");
-giphyApiQuery("popcorn");
