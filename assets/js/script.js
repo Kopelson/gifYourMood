@@ -7,8 +7,8 @@
 function jokeApiQuery(){
     //select any joke
     let any = "Any";
-    //muiltiple selections are seperated by a ","
-    //catagory options 
+    //multiple selections are separated by a ","
+    //category options 
     // let more = ","
     // let miscellaneous = "Miscellaneous";
     // let programming = "Programming";
