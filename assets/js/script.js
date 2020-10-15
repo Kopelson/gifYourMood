@@ -109,19 +109,6 @@ function ajaxRequest(queryUrl){
 
 };
 
-$("#sadBtn").on("click", function(){
-    choiceOfMood("sad");
-})
-
-$("#happyBtn").on("click", function(){
-    choiceOfMood("happy");
-})
-
-//Determine the choice the user made
-function choiceOfMood(choice){
-    pexelApiQuery(choice);
-}
-
 //test response
 jokeApiQuery();
 pexelApiQuery("sad");
