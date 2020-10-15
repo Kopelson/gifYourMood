@@ -121,6 +121,8 @@ function ajaxRequest(queryUrl){
 $("#modal-picture").on("click", "a", function(event){
     event.preventDefault();
 
+    //This is for testing purpose
+    //The parameter will be updated to take a word from picture and joke chosen
     giphyApiQuery("happy");
 });
 
