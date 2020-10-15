@@ -86,7 +86,16 @@ function giphyApiQuery(search){
     let and = "&"
     let queryUrl = url + giphyApiKey + and + query + search;
 
-    ajaxRequest(queryUrl);
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+    }).then(function(response){
+        let gifArr = response.data;
+        let randomGif = gifArr[Math.floor(Math.random()*gifArr.length)];    //pick a random gif
+        $("#gif").attr("src", randomGif.images.original.url);
+    }, function(error){
+        console.log(error);
+    });
 
 };
 
@@ -104,6 +113,16 @@ function ajaxRequest(queryUrl){
     });
 
 };
+
+/****************************/
+//Event handling functions
+
+//Choosing a picture return a gif
+$("#modal-picture").on("click", "a", function(event){
+    event.preventDefault();
+
+    giphyApiQuery("happy");
+});
 
 //test response
 // jokeApiQuery();
