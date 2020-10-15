@@ -129,6 +129,21 @@ function ajaxRequest(queryUrl){
 
 };
 
+//Reset elements
+function resetElements()
+{
+    for(var i = 1; i<=4; i++)
+    {
+        let picID = "picture" + i;
+        $("#"+picID).children("img").attr("src", "");      //Reset the picture elements to have no src
+        
+        let jokeID = "joke" + i;
+        $("#"+jokeID).text("");                            //Reset the joke elements to have no text
+    }
+
+    $("#gif").attr("src", "");                             //Reset the gif element to have no src
+}
+
 /****************************/
 //Event handling functions
 
