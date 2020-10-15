@@ -105,3 +105,7 @@ function ajaxRequest(queryUrl){
 
 };
 
+//test response
+// jokeApiQuery();
+// pexelApiQuery("popcorn");
+// giphyApiQuery("popcorn");
