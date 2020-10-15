@@ -60,7 +60,7 @@ function pexelApiQuery(search){
             picArr.splice(index, 1);                                            //remove selected picture from the array
 
             let id = "picture" + i;
-            $("#"+id).children("img").attr("src", randomPic.src.tiny);
+            $("#"+id).children("img").attr("src", randomPic.src.portrait);
         }
     }, function(error){
         console.log(error);
