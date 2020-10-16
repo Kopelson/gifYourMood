@@ -42,14 +42,14 @@
     <!-- model for jokes -->
     <div id="modal-jokes" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
         <form>
             <h1>Select the funniest joke</h1>
             <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke1">Option 1</a>
+            <hr/>
             <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke2">Option 2</a>
+            <hr/>
             <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke3">Option 3</a>
+            <hr/>
             <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke4">Option 4</a>
         </form>
 
@@ -59,19 +59,23 @@
     <!-- model for pictures -->
     <div id="modal-picture" class="uk-flex-top" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        <form>
-            <h1>Select the funniest picture</h1>
-            
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture1" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture2" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture3" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture4" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            
-        </form>
-
+            <h1>Choose a picture!</h1>
+            <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item<a class="uk-button uk-button-secondary uk-width-1-1" id="picture1" href="#modal-gif" uk-toggle><img ></a></div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item<a class="uk-button uk-button-secondary uk-width-1-1" id="picture2" href="#modal-gif" uk-toggle><img ></a></div>
+                </div>
+            </div>
+            <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item<a class="uk-button uk-button-secondary uk-width-1-1" id="picture3" href="#modal-gif" uk-toggle><img ></a></div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">Item<a class="uk-button uk-button-secondary uk-width-1-1" id="picture4" href="#modal-gif" uk-toggle><img ></a></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -83,9 +87,11 @@
 
         <form>
             <h1>Here is the Gif for you!</h1>
-            <img src="./assets/img/Wireframing for GYM (1).png">
-            <button class="uk-button uk-button-secondary uk-width-1-1">Dislike</button>
-            <button class="uk-button uk-button-secondary uk-width-1-1">Like</button>
+            <img id="gif">
+            <div class="uk-inline">
+                <button id="dislike" class="uk-button uk-button">Dislike</button>
+                <button id="like" class="uk-button uk-button-secondary">Like</button>
+            </div>
         </form>
 
         </div>

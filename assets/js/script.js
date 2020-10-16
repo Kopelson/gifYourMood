@@ -1,3 +1,4 @@
+
 // local variables
 // joke API
 let any = "Any";
@@ -96,7 +97,7 @@ $("#sad").on("click", function(){
 function pexelApiQuery(search){
     //we can put any string as the search to get photos
     let query = "?query=";
-    let perPage = "per_page=4";
+    let perPage = "per_page=80";
     let page = "page=1";
     let pexelsApiKey = "563492ad6f91700001000001a7186190942c4e13817d5ad0d55b7ade";
     let url = "https://api.pexels.com/v1/search";
@@ -110,7 +111,16 @@ function pexelApiQuery(search){
         },
         method: "GET"
     }).then(function(response){
-        console.log(response);
+        let picArr = response.photos;
+        for(var i = 1; i <= 4; i++)                                             //Iterate through 4 picture elements and set src attribute for each element
+        {
+            let index = Math.floor(Math.random()*picArr.length);
+            let randomPic = picArr[index];                                      //Pick a random picture from the response
+            picArr.splice(index, 1);                                            //remove selected picture from the array
+
+            let id = "picture" + i;
+            $("#"+id).children("img").attr("src", randomPic.src.portrait);
+        }
     }, function(error){
         console.log(error);
     });
@@ -144,7 +154,22 @@ function giphyApiQuery(search){
     let and = "&"
     let queryUrl = url + giphyApiKey + and + query + search;
 
-    ajaxRequest(queryUrl);
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+    }).then(function(response){
+        for(var i = 1; i<=4; i++)
+        {
+            let id = "picture" + i;
+            $("#"+id).children("img").attr("src", "");
+        }
+
+        let gifArr = response.data;
+        let randomGif = gifArr[Math.floor(Math.random()*gifArr.length)];    //pick a random gif
+        $("#gif").attr("src", randomGif.images.original.url);
+    }, function(error){
+        console.log(error);
+    });
 
 };
 
@@ -155,14 +180,70 @@ function ajaxRequest(queryUrl){
         url: queryUrl,
         method: "GET"
     }).then(function(response){
-        console.log(response);
+        ajaxResponse = response;
+        console.log(ajaxResponse);
     }, function(error){
         console.log(error);
     });
 
 };
 
+//Reset elements
+function resetElements()
+{
+    for(var i = 1; i<=4; i++)
+    {
+        let picID = "picture" + i;
+        $("#"+picID).children("img").attr("src", "");      //Reset the picture elements to have no src
+        
+        let jokeID = "joke" + i;
+        $("#"+jokeID).text("");                            //Reset the joke elements to have no text
+    }
+
+    $("#gif").attr("src", "");                             //Reset the gif element to have no src
+}
+
+/****************************/
+//Event handling functions
+
+//Choosing a joke return 4 pictures
+$("#modal-jokes").on("click", "a", function(event){
+    event.preventDefault();
+
+    //This is for testing purpose
+    //The parameter will be updated
+    pexelApiQuery("popcorn");
+});
+
+//Choosing a picture return a gif
+$("#modal-picture").on("click", "a", function(event){
+    event.preventDefault();
+
+    //This is for testing purpose
+    //The parameter will be updated
+    giphyApiQuery("happy");
+});
+
+//Store the gif in an array in localstorage
+$("#like").on("click", function(event){
+    if(!localStorage.getItem("gifs"))                               //If storage hasn't been initialized
+    {
+        let gifArr = [];
+        gifArr.push($("#gif").attr("src"));
+        localStorage.setItem("gifs", JSON.stringify(gifArr));       
+    }
+    else
+    {
+        let gifArr = JSON.parse(localStorage.getItem("gifs"));      //extract the array of gifs from local storage
+        gifArr.push($("#gif").attr("src"));
+        localStorage.setItem("gifs", JSON.stringify(gifArr));     
+    }
+
+    resetElements();
+});
+
+/****************************/
 //test response
 // jokeApiQuery();
-pexelApiQuery("popcorn");
-giphyApiQuery("popcorn");
+// pexelApiQuery("popcorn");
+// giphyApiQuery("popcorn");
