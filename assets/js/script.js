@@ -112,14 +112,25 @@ function pexelApiQuery(search){
         method: "GET"
     }).then(function(response){
         let picArr = response.photos;
-        for(var i = 1; i <= 4; i++)                                             //Iterate through 4 picture elements and set src attribute for each element
+        if(picArr.length === 0)
         {
-            let index = Math.floor(Math.random()*picArr.length);
-            let randomPic = picArr[index];                                      //Pick a random picture from the response
-            picArr.splice(index, 1);                                            //remove selected picture from the array
+            //do something here
+            pexelApiQuery("random");
+        }
+        else{
+            for(var i = 1; i <= 4; i++)                                             //Iterate through 4 picture elements and set src attribute for each element
+            {
+                if(i > picArr.length)
+                {
+                    break;
+                }
+                let index = Math.floor(Math.random()*picArr.length);
+                let randomPic = picArr[index];                                    //Pick a random picture from the response
+                picArr.splice(index, 1);                                            //remove selected picture from the array
 
-            let id = "picture" + i;
-            $("#"+id).children("img").attr("src", randomPic.src.portrait);
+                let id = "picture" + i;
+                $("#"+id).children("img").attr("src", randomPic.src.portrait);
+            }
         }
     }, function(error){
         console.log(error);
@@ -206,13 +217,58 @@ function resetElements()
 /****************************/
 //Event handling functions
 
+let pexelSearchPhrase = "";                                //pexel search parameter
+
+//joke 1 handler
+jokeBtnOne.on("click", function(event){
+    event.preventDefault();
+
+     let theJoke = $(this).text();
+     console.log(theJoke);
+
+     let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
+     pexelSearchPhrase = searchPhrase;
+});
+
+//joke 1 handler
+jokeBtnTwo.on("click", function(event){
+    event.preventDefault();
+
+     let theJoke = $(this).text();
+     console.log(theJoke);
+
+     let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
+     pexelSearchPhrase = searchPhrase;
+});
+
+//joke 1 handler
+jokeBtnThree.on("click", function(event){
+    event.preventDefault();
+
+     let theJoke = $(this).text();
+     console.log(theJoke);
+
+     let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
+     pexelSearchPhrase = searchPhrase;
+});
+
+//joke 1 handler
+jokeBtnFour.on("click", function(event){
+    event.preventDefault();
+
+     let theJoke = $(this).text();
+
+     let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
+     pexelSearchPhrase = searchPhrase;
+});
+
 //Choosing a joke return 4 pictures
 $("#modal-jokes").on("click", "a", function(event){
     event.preventDefault();
 
     //This is for testing purpose
     //The parameter will be updated
-    pexelApiQuery("popcorn");
+    pexelApiQuery(pexelSearchPhrase);
 });
 
 //Choosing a picture return a gif
@@ -241,6 +297,8 @@ $("#like").on("click", function(event){
 
     resetElements();
 });
+
+
 
 /****************************/
 //test response
