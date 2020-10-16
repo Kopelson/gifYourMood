@@ -282,6 +282,7 @@ $("#modal-picture").on("click", "a", function(event) {
 
 //Store the gif in an array in localstorage
 $("#like").on("click", function(event) {
+    event.preventDefault();
     if (!localStorage.getItem("gifs")) //If storage hasn't been initialized
     {
         let gifArr = [];
@@ -315,6 +316,6 @@ $("#like").on("click", function(event) {
 
 // This function will open new page
 function openGallery() {
-    window.location.assign(); // fix this
+    window.location.assign("./gallery.html"); 
 
 }
