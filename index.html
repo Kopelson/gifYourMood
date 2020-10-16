@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,95 +9,113 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <!-- JsDelivr UIKIt CSS link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/css/uikit.min.css" />
+    <!-- Google fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    <!-- Native CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-<!-- main container -->
-<div class="uk-container">
-    <!-- header -->
-    <header>
-        <h1>Gif Your Mood</h1>
-    </header>
-    <main>
-        <div class="uk-inline">
-            <!-- placeholder container -->
-            <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-                <!-- placeholder 1 -->
-            <div class="uk-card uk-card-default uk-card-body">
-            <img src="./assets/img/Wireframing for GYM (1).png">
-            <!-- button 1 -->
-            <button class="uk-button uk-button-secondary uk-width-1-1 " href="#modal-jokes" uk-toggle id="happy">Happy</button>
+    <!-- main container -->
+    <div class="uk-container">
+        <!-- header -->
+        <header>
+            <h1>Gif Your Mood</h1>
+        </header>
+        <main>
+            <div class="uk-inline">
+                <!-- placeholder container -->
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <!-- placeholder 1 -->
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <img src="./assets/img/Wireframing for GYM (1).png">
+                        <!-- button 1 -->
+                        <button class="uk-button uk-button-secondary uk-width-1-1 happyBtn" href="#modal-jokes" uk-toggle id="happy">Happy</button>
+                    </div>
+                    <!-- placeholder 2 -->
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <img src="./assets/img/Wireframing for GYM (1).png">
+                        <!-- button 2 -->
+                        <button class="uk-button uk-button-secondary uk-width-1-1 sadBtn" href="#modal-jokes" uk-toggle id="sad">Sad</button>
+                    </div>
+                </div>
             </div>
-            <!-- placeholder 2 -->
-            <div class="uk-card uk-card-default uk-card-body">
-            <img src="./assets/img/Wireframing for GYM (1).png">
-            <!-- button 2 -->
-            <button class="uk-button uk-button-secondary uk-width-1-1" href="#modal-jokes" uk-toggle id="sad">Sad</button>
+
+
+        </main>
+
+        <!-- model for jokes -->
+        <div id="modal-jokes" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <form>
+                    <h1>Select the funniest joke</h1>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke1"></a>
+                    <hr/>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke2"></a>
+                    <hr/>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke3"></a>
+                    <hr/>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke4"></a>
+                </form>
+
             </div>
         </div>
-    </div>
-        
-        
-    </main>
-    
-    <!-- model for jokes -->
-    <div id="modal-jokes" class="uk-flex-top" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        <form>
-            <h1>Select the funniest joke</h1>
-            <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke1">Option 1</a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke2">Option 2</a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke3">Option 3</a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke4">Option 4</a>
-        </form>
-
+        <!-- model for pictures -->
+        <div id="modal-picture" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                <h1>Choose a picture!</h1>
+                <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture1" href="#modal-gif" uk-toggle><img></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture2" href="#modal-gif" uk-toggle><img></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture3" href="#modal-gif" uk-toggle><img></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture4" href="#modal-gif" uk-toggle><img></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- model for pictures -->
-    <div id="modal-picture" class="uk-flex-top" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <!-- model for gif -->
+        <div id="modal-gif" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
-        <button class="uk-modal-close-default" type="button" uk-close></button>
+                <button class="uk-modal-close-default" type="button" uk-close></button>
 
-        <form>
-            <h1>Select the funniest picture</h1>
-            
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture1" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture2" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture3" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            <a class="uk-button uk-button-secondary uk-width-1-1" id="picture4" href="#modal-gif" uk-toggle><img src="./assets/img/Wireframing for GYM (1).png"></a>
-            
-        </form>
+                <form>
+                    <h1>Here is the Gif for you!</h1>
+                    <img id="gif">
+                    <div class="uk-inline">
+                        <button id="dislike" class="uk-button uk-button">Dislike</button>
+                        <button id="like" class="uk-button uk-button-secondary">Like</button>
+                    </div>
+                </form>
 
+            </div>
         </div>
+        <!-- go to gallery button-->
+        <a class="uk-button uk-button-secondary uk-width-1-1 galleryBtn" href="gallery.html" id="gallery">View Gallery</a>
+
+
+
+
     </div>
-
-     <!-- model for gif -->
-     <div id="modal-gif" class="uk-flex-top" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        <form>
-            <h1>Here is the Gif for you!</h1>
-            <img src="./assets/img/Wireframing for GYM (1).png">
-            <button class="uk-button uk-button-secondary uk-width-1-1">Dislike</button>
-            <button class="uk-button uk-button-secondary uk-width-1-1">Like</button>
-        </form>
-
-        </div>
-    </div>
-    <!-- go to gallery button-->
-    <a class="uk-button uk-button-secondary uk-width-1-1" href="gallery.html" id="gallery">View Gallery</a>
-
-
-
-
-</div>
     <!-- jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--UIkit hosted from JsDelivr  -->
@@ -105,4 +124,5 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/js/uikit-icons.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
