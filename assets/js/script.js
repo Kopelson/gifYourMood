@@ -1,39 +1,98 @@
+
+// local variables
+// joke API
+let any = "Any";
+let blacklistFlags = "?blacklistFlags=";
+let racist = "racist";
+let and = "&"
+let type = "type=single"
+let amount = "amount=4";
+let url = "https://sv443.net/jokeapi/v2/joke/";
+// let jokeQueryUrl = url + any + blacklistFlags + racist + and + amount + and + type;
+
+
+var jokeBtnOne = $("#joke1");
+var jokeBtnTwo = $("#joke2");
+var jokeBtnThree = $("#joke3");
+var jokeBtnFour = $("#joke4");
+
+$("#happy").on("click", function(){
+    // call joke API
+    let pun = "Pun";
+    
+    let happyJokeURL = url + pun + blacklistFlags + racist + and + amount + and + type
+$.ajax({
+    url: happyJokeURL,
+    method: "GET"
+}).then(function(response){
+    console.log(response);
+    jokeBtnOne.text(response.jokes[0].joke);
+    jokeBtnTwo.text(response.jokes[1].joke);
+    jokeBtnThree.text(response.jokes[2].joke);
+    jokeBtnFour.text(response.jokes[3].joke);
+
+
+
+
+}, function(error){
+    console.log(error);
+});
+// paint JOKES onto buttons
+
+
+// WHAT HAPPENS NEXT
+// 1.click on button
+// 2.new jokes appear
+// create variables out of responses? 
+})
+
+$("#sad").on("click", function(){
+    // call joke api
+    let dark = "Dark";
+    let miscellaneous = "Miscellaneous";
+    let jokeQueryUrl = url + miscellaneous + "," + dark + blacklistFlags + racist + and + amount + and + type;
+    $.ajax({
+    url: jokeQueryUrl,
+    method: "GET"
+}).then(function(response){
+    console.log(response);
+    jokeBtnOne.text(response.jokes[0].joke);
+    jokeBtnTwo.text(response.jokes[1].joke);
+    jokeBtnThree.text(response.jokes[2].joke);
+    jokeBtnFour.text(response.jokes[3].joke);
+}, function(error){
+    console.log(error);
+});
+    // paint JOKES onto buttons
+    
+    // 
+})
+
 //JokeAPI	Programming, Miscellaneous and Dark Jokes
 //JokeAPI  documentation https://sv443.net/jokeapi/v2/
 //Doesn't use API keys
 //I think we should use separate functions to create different query URL's for each api
-function jokeApiQuery(){
+// function jokeApiQuery(){
     //select any joke
-    let any = "Any";
     //multiple selections are separated by a ","
     //category options 
     // let more = ","
-    // let miscellaneous = "Miscellaneous";
     // let programming = "Programming";
-    // let dark = "Dark";
-    // let pun = "Pun";
     // blacklist flag options
-    let blacklistFlags = "?blacklistFlags=";
     // let nsfw = "nsfw";
     // let religious = "religious";
     // let political = "political";
-    let racist = "racist";
     // let sexist = "sexist";
     //each option after is separated by a "&"
-    let and = "&"
     //type options *twoPart is default
-    // let type = "type=single"
     //amount of jokes * 1 joke is default
-    let amount = "amount=4";
     //the url for jokeAPI
-    let url = "https://sv443.net/jokeapi/v2/joke/";
     //this will need to be coded for user options but for test purposes
-    let queryUrl = url + any + blacklistFlags + racist + and + amount;
-    ajaxRequest(queryUrl);
-};
+    // ajaxRequest(queryUrl);
+// };
 
 //Pexels	Free Stock Photos and Videos	
-//Pexel API Documentation https://www.pexels.com/api/documentation/
+// Pexel API Documentation https://www.pexels.com/api/documentation/
 //turtorial on pexel use in the browser https://www.youtube.com/watch?v=d1Nke7twxMM
 function pexelApiQuery(search){
     //we can put any string as the search to get photos
@@ -115,7 +174,7 @@ function giphyApiQuery(search){
 };
 
 
-//this function will make all ajax request
+// //this function will make all ajax request
 function ajaxRequest(queryUrl){
     $.ajax({
         url: queryUrl,
