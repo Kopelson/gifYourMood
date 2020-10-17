@@ -28,13 +28,14 @@
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <!-- placeholder 1 -->
                     <div class="uk-card uk-card-default uk-card-body">
-                        <img src="./assets/img/Wireframing for GYM (1).png">
+                        <img src="./assets/img/happy.png">
                         <!-- button 1 -->
                         <button class="uk-button uk-button-secondary uk-width-1-1 happyBtn" href="#modal-jokes" uk-toggle id="happy">Happy</button>
                     </div>
+
                     <!-- placeholder 2 -->
                     <div class="uk-card uk-card-default uk-card-body">
-                        <img src="./assets/img/Wireframing for GYM (1).png">
+                        <img src="./assets/img/sad.png">
                         <!-- button 2 -->
                         <button class="uk-button uk-button-secondary uk-width-1-1 sadBtn" href="#modal-jokes" uk-toggle id="sad">Sad</button>
                     </div>
@@ -49,13 +50,13 @@
             <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
                 <form>
                     <h1>Select the funniest joke</h1>
-                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke1">Option 1</a>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke1"></a>
                     <hr/>
-                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke2">Option 2</a>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke2"></a>
                     <hr/>
-                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke3">Option 3</a>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke3"></a>
                     <hr/>
-                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke4">Option 4</a>
+                    <a class="uk-button uk-button-secondary uk-width-1-1" href="#modal-picture" uk-toggle id="joke4"></a>
                 </form>
 
             </div>
@@ -67,24 +68,24 @@
                 <h1>Choose a picture!</h1>
                 <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <div class="uk-card uk-card-default uk-card-body">Item
+                        <div class="uk-card uk-card-default uk-card-body">
                             <a class="uk-button uk-button-secondary uk-width-1-1" id="picture1" href="#modal-gif" uk-toggle><img></a>
                         </div>
                     </div>
                     <div>
-                        <div class="uk-card uk-card-default uk-card-body">Item
+                        <div class="uk-card uk-card-default uk-card-body">
                             <a class="uk-button uk-button-secondary uk-width-1-1" id="picture2" href="#modal-gif" uk-toggle><img></a>
                         </div>
                     </div>
                 </div>
                 <div class="uk-grid-medium uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <div class="uk-card uk-card-default uk-card-body">Item
+                        <div class="uk-card uk-card-default uk-card-body">
                             <a class="uk-button uk-button-secondary uk-width-1-1" id="picture3" href="#modal-gif" uk-toggle><img></a>
                         </div>
                     </div>
                     <div>
-                        <div class="uk-card uk-card-default uk-card-body">Item
+                        <div class="uk-card uk-card-default uk-card-body">
                             <a class="uk-button uk-button-secondary uk-width-1-1" id="picture4" href="#modal-gif" uk-toggle><img></a>
                         </div>
                     </div>
@@ -101,9 +102,9 @@
                 <form>
                     <h1>Here is the Gif for you!</h1>
                     <img id="gif">
-                    <div class="uk-inline">
-                        <button id="dislike" class="uk-button uk-button">Dislike</button>
-                        <button id="like" class="uk-button uk-button-secondary">Like</button>
+                    <div class="likeDislike">
+                        <button id="dislike" class="uk-button uk-button dislikeBtn">Dislike</button>
+                        <button id="like" class="uk-button uk-button-secondary likeBtn">Like</button>
                     </div>
                 </form>
 
