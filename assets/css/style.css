@@ -114,3 +114,10 @@
     .likeBtn:hover {
         background-color: rgb(57, 140, 230);
     }
+
+    /* This style to the gifs in gallery */
+
+.gifs {
+    width: 250px;
+    height: auto;
+} 
