@@ -25,15 +25,35 @@ h1 {
 /* This styles happy&sadbuttons */
 
 .happyBtn {
-    background-color: rgb(198, 39, 198);
+    background-color: white;
     font-family: 'Rammetto One', cursive;
     font-size: larger;
+    margin-top: 40px;
+    padding: 10px;
+    color: black;
+    border: 5px solid;
+    border-color: rgb(198, 39, 198);
+}
+
+
+/* this changes color when hoovering over the button */
+
+.happyBtn:hover {
+    background-color: rgb(198, 39, 198);
 }
 
 .sadBtn {
     font-family: 'Rammetto One', cursive;
     font-size: larger;
-    background-color: rgb(96, 92, 92);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: 5px solid;
+    border-color: rgb(0, 0, 0);
+}
+
+.sadBtn:hoover {
+    background-color: rgb(0, 0, 0);
 }
 
 
@@ -52,6 +72,10 @@ h1 {
     color: black;
 }
 
+.galleryBtn:hover {
+    background-color: rgb(76, 23, 198);
+}
+
 
 /* This styles home button */
 
@@ -61,5 +85,46 @@ h1 {
     font-family: 'Rammetto One', cursive;
     font-size: larger;
     background-color: white;
+    border-color: rgb(76, 23, 198);
+    border-width: 10px;
     color: black;
+}
+
+.homeBtn:hover {
+    background-color: rgb(76, 23, 198);
+}
+
+
+/* This styles dislike button and hover effect */
+
+.dislikeBtn {
+    font-family: 'Rammetto One', cursive;
+    background-color: rgb(255, 253, 253);
+    color: rgb(220, 95, 95);
+    padding-top: 10px;
+    border: 5px solid;
+    margin-top: 10px;
+    border-color: rgb(220, 95, 95);
+}
+
+.dislikeBtn:hover {
+    background-color: rgb(220, 95, 95);
+    color: rgb(255, 253, 253);
+}
+
+
+/* This styles like button and hover effect */
+
+.likeBtn {
+    font-family: 'Rammetto One', cursive;
+    background-color: rgb(255, 253, 253);
+    color: rgb(57, 140, 230);
+    padding-top: 10px;
+    border: 5px solid;
+    margin-top: 10px;
+    border-color: rgb(57, 140, 230);
+}
+
+.likeBtn:hover {
+    background-color: rgb(57, 140, 230);
 }
