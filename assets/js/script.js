@@ -234,10 +234,6 @@ $(document).ready(function(){
             url: queryUrl,
             method: "GET"
         }).then(function(response) {
-            for (var i = 1; i <= 4; i++) {
-                let id = "picture" + i;
-                $("#" + id).children("img").attr("src", "");
-            }
     
             let gifArr = response.data;                                        //Get the gif array from the response
             let randomGif = gifArr[Math.floor(Math.random() * gifArr.length)]; //Pick a random gif from the array
