@@ -57,6 +57,13 @@ GIVEN I am a user with an internet connection <br>
 WHEN I answer all questions in the questionnaire <br>
 THEN I receive a GIF that matches my current mood <br>
 
+## Future improvements
+
+* User can adjust maturity settings 
+* Better selection of emotions
+* Transfer gifs to other platforms / more user friendly 
+* Fun user experience / animations/ catchy music / interactive sounds
+
 ## Credits
 
 ### jQuery
