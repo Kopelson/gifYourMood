@@ -153,12 +153,50 @@ $(document).ready(function(){
                     let index = Math.floor(Math.random()*picArr.length);
                     let randomPic = picArr[index];                                    //Pick a random picture from the response
                     picArr.splice(index, 1);                                            //remove selected picture from the array
-    
                     let id = "picture" + i;
                     $("#"+id).children("img").attr("src", randomPic.src.portrait);
-                }
-    
-            }
+
+                    
+                    //this assigns urlString the current picture url 
+                    let urlString = randomPic.url;
+                    //tutorial on parsing a url https://dmitripavlutin.com/parse-url-javascript/
+                    //this url constructor allows us to parse url's
+                    const url = new URL(
+                        urlString
+                    );
+                    //this grabs the pathname in the url
+                    let pathName = url.pathname;
+                    //this creates an array of strings of the pathname
+                    let pathNameArr = pathName.split("-");
+                    //this removes the first index of the array which containes "/photo/*"
+                    pathNameArr.splice(0,1);
+                    //this initializes a do/while conditional
+                    let j = 0;
+                    //this do loop assigns a random word describing the picture in the data-id attribute on the img element
+                    do {
+                        //this randomly assigns an index of pathNameArr
+                        let randomPicWordIndex = Math.floor(Math.random()* pathNameArr.length);
+                        //this makes sure the last index is never picked due to it being a string of numbers
+                        let randomPicWord = pathNameArr[randomPicWordIndex - 1];
+                        //this checks if the index goes below 0 it will change to the first index of the pathNameArr
+                        if (randomPicWord === undefined){
+                            randomPicWord = pathNameArr[randomPicWordIndex + 1];
+                        };
+                        //this checks the index of jokeArr which contains a list of common words and repicks a word if the randomly choosen word is a common word.
+                        if (jokeArr.indexOf(randomPicWord) === -1) {
+                            //if the random word is not a common word the img element gains the data-id attribute equal to the random word
+                            $("#"+id).children("img").attr("data-id", randomPicWord);
+                            //this adds one to j to end the do/while loop
+                            j++;
+                        //this gets a new random index to pick a different word
+                        }else{
+                            randomPicWordIndex = Math.floor(Math.random()* pathNameArr.length);
+                        };  
+                    }
+                    //the do/while conditional
+                     while(j < 1);
+                };    
+            };
         }, function(error) {
             console.log(error);
         });
@@ -444,12 +482,14 @@ $(document).ready(function(){
     });
     
     //Choosing a picture return a gif
-    $("#modal-picture").on("click", "a", function(event) {
+    //this adds a click event listener on modal-picture id specifically the img tags
+    $("#modal-picture").on("click", "img", function(event) {
         event.preventDefault();
-    
-        //This is for testing purpose
-        //The parameter will be updated
-        let combinedQuery = moodChoice + " " + jokeChoice;
+        //this assigns pictureChoice to the word describing the picture
+        pictureChoice = $(this).data("id");
+        //this stores a string of words from the mood. joke, and picture
+        let combinedQuery = moodChoice + " " + jokeChoice + " " + pictureChoice;
+        //this query's Giphy api with the combined words
         giphyApiQuery(combinedQuery);
     });
     
@@ -471,21 +511,6 @@ $(document).ready(function(){
         openGallery();
     
     });
-    
-    
-    
-    /****************************/
-    //test response
-    // jokeApiQuery();
-    // pexelApiQuery("popcorn");
-    // giphyApiQuery("popcorn");
-    
-    // Render gallery function
-    
-    // function renderGallery() {
-    //     $("#galleryPics").empty()
-    // }
-    // renderGallery();
     
     // This function will open new page
     function openGallery() {
