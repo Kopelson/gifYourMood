@@ -362,6 +362,9 @@ $(document).ready(function(){
     
         //  let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
          pexelSearchPhrase = jokeChoice;
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     
     //joke 1 handler
@@ -398,6 +401,9 @@ $(document).ready(function(){
     
         //  let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
          pexelSearchPhrase = jokeChoice;
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     jokeBtnThree.on("click", function(event){
         event.preventDefault();
@@ -432,6 +438,9 @@ $(document).ready(function(){
     
         //  let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
          pexelSearchPhrase = jokeChoice;
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     jokeBtnFour.on("click", function(event){
         event.preventDefault();
@@ -466,15 +475,9 @@ $(document).ready(function(){
     
         //  let searchPhrase = theJoke.split(' ').slice(0,3).join(' ');
          pexelSearchPhrase = jokeChoice;
-    });
-    
-    //Choosing a joke return 4 pictures
-    $("#modal-jokes").on("click", "a", function(event) {
-        event.preventDefault();
-    
-        //This is for testing purpose
-        //The parameter will be updated
-        pexelApiQuery(pexelSearchPhrase);
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     
     //Choosing a picture return a gif
