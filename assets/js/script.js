@@ -144,17 +144,17 @@ $(document).ready(function(){
                 pexelApiQuery("random");
             }
             else{
-                for(var i = 1; i <= 4; i++)                                             //Iterate through 4 picture elements and set src attribute for each element
+                for(var i = 1; i <= 4; i++)     //Iterate through 4 picture elements and set src attribute for each element
                 {
-                    if(i > picArr.length)
+                    if(i > picArr.length)       //Check if the returned array of picture has less than 4 pictures
                     {
-                        break;
+                        break;                  
                     }
-                    let index = Math.floor(Math.random()*picArr.length);
-                    let randomPic = picArr[index];                                    //Pick a random picture from the response
-                    picArr.splice(index, 1);                                            //remove selected picture from the array
-                    let id = "picture" + i;
-                    $("#"+id).children("img").attr("src", randomPic.src.portrait);
+                    let index = Math.floor(Math.random()*picArr.length);              //Randomize the index 
+                    let randomPic = picArr[index];                                    //Pick a random picture from the response using the index
+                    picArr.splice(index, 1);                                          //Remove selected picture from the array to avoid repeating the picture
+                    let id = "picture" + i;                                           //Get the current element id
+                    $("#"+id).children("img").attr("src", randomPic.src.portrait);    //Append the url to the src attr of the img
 
                     
                     //this assigns urlString the current picture url 
@@ -239,9 +239,9 @@ $(document).ready(function(){
                 $("#" + id).children("img").attr("src", "");
             }
     
-            let gifArr = response.data;
-            let randomGif = gifArr[Math.floor(Math.random() * gifArr.length)]; //pick a random gif
-            $("#gif").attr("src", randomGif.images.original.url);
+            let gifArr = response.data;                                        //Get the gif array from the response
+            let randomGif = gifArr[Math.floor(Math.random() * gifArr.length)]; //Pick a random gif from the array
+            $("#gif").attr("src", randomGif.images.original.url);              //Set the src attr of the gif element with the url
         }, function(error) {
             console.log(error);
         });
@@ -498,16 +498,16 @@ $(document).ready(function(){
         event.preventDefault();
         if (!localStorage.getItem("gifs")) //If storage hasn't been initialized
         {
-            let gifArr = [];
-            gifArr.push($("#gif").attr("src"));
-            localStorage.setItem("gifs", JSON.stringify(gifArr));
+            let gifArr = [];                                        //Initialize the array
+            gifArr.push($("#gif").attr("src"));                     //Push the url to the array
+            localStorage.setItem("gifs", JSON.stringify(gifArr));   //Store the array in localstorage
         } else {
             let gifArr = JSON.parse(localStorage.getItem("gifs")); //extract the array of gifs from local storage
-            gifArr.push($("#gif").attr("src"));
-            localStorage.setItem("gifs", JSON.stringify(gifArr));
+            gifArr.push($("#gif").attr("src"));                     //Push the url to the array
+            localStorage.setItem("gifs", JSON.stringify(gifArr));   //Store the array in localstorage
         }
     
-        resetElements();
+        resetElements();    //Reset here after the user likes a gif
         openGallery();
     
     });
