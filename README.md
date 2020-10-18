@@ -13,6 +13,8 @@
 ## Overview
 Project Link: https://kopelson.github.io/gifYourMood/
 
+![Main](https://user-images.githubusercontent.com/57735283/96357202-a21b0b00-10ad-11eb-81ca-7f24d6417976.JPG)
+
 ## Goals
 
 ### Project requirements
