@@ -153,24 +153,57 @@ $(document).ready(function(){
                 //Iterate through 4 picture elements and set src attribute for each element
                 for(var i = 1; i <= 4; i++)
                 {
-                    if(i > picArr.length)
+                    if(i > picArr.length)       //Check if the returned array of picture has less than 4 pictures
                     {
-                        // if we have 4 stop
-                        break;
+                        break;                  
                     }
-                    // randomly selects pics 
-                    let index = Math.floor(Math.random()*picArr.length);
-                    //Pick a random picture from the response
-                    let randomPic = picArr[index];
-                    //remove selected picture from the array
-                    picArr.splice(index, 1);                                            
-                    // names ID assinged to image 
-                    let id = "picture" + i;
-                    // adds image to html
-                    $("#"+id).children("img").attr("src", randomPic.src.portrait);
-                }
-    
-            }
+                    let index = Math.floor(Math.random()*picArr.length);              //Randomize the index 
+                    let randomPic = picArr[index];                                    //Pick a random picture from the response using the index
+                    picArr.splice(index, 1);                                          //Remove selected picture from the array to avoid repeating the picture
+                    let id = "picture" + i;                                           //Get the current element id
+                    $("#"+id).children("img").attr("src", randomPic.src.portrait);    //Append the url to the src attr of the img
+
+                    
+                    //this assigns urlString the current picture url 
+                    let urlString = randomPic.url;
+                    //tutorial on parsing a url https://dmitripavlutin.com/parse-url-javascript/
+                    //this url constructor allows us to parse url's
+                    const url = new URL(
+                        urlString
+                    );
+                    //this grabs the pathname in the url
+                    let pathName = url.pathname;
+                    //this creates an array of strings of the pathname
+                    let pathNameArr = pathName.split("-");
+                    //this removes the first index of the array which containes "/photo/*"
+                    pathNameArr.splice(0,1);
+                    //this initializes a do/while conditional
+                    let j = 0;
+                    //this do loop assigns a random word describing the picture in the data-id attribute on the img element
+                    do {
+                        //this randomly assigns an index of pathNameArr
+                        let randomPicWordIndex = Math.floor(Math.random()* pathNameArr.length);
+                        //this makes sure the last index is never picked due to it being a string of numbers
+                        let randomPicWord = pathNameArr[randomPicWordIndex - 1];
+                        //this checks if the index goes below 0 it will change to the first index of the pathNameArr
+                        if (randomPicWord === undefined){
+                            randomPicWord = pathNameArr[randomPicWordIndex + 1];
+                        };
+                        //this checks the index of jokeArr which contains a list of common words and repicks a word if the randomly choosen word is a common word.
+                        if (jokeArr.indexOf(randomPicWord) === -1) {
+                            //if the random word is not a common word the img element gains the data-id attribute equal to the random word
+                            $("#"+id).children("img").attr("data-id", randomPicWord);
+                            //this adds one to j to end the do/while loop
+                            j++;
+                        //this gets a new random index to pick a different word
+                        }else{
+                            randomPicWordIndex = Math.floor(Math.random()* pathNameArr.length);
+                        };  
+                    }
+                    //the do/while conditional
+                     while(j < 1);
+                };    
+            };
         }, function(error) {
             // handles errors
             console.log(error);
@@ -199,13 +232,10 @@ $(document).ready(function(){
                 $("#" + id).children("img").attr("src", "");
                 // adds img with id and src to html 
             }
-            // gif array 
-            let gifArr = response.data;
-            // randomly selecting a gif from the array and assigning it a variable
-            let randomGif = gifArr[Math.floor(Math.random() * gifArr.length)];
-            // displaying gif on html
-            $("#gif").attr("src", randomGif.images.original.url);
-            // handles errors
+    
+            let gifArr = response.data;                                        //Get the gif array from the response
+            let randomGif = gifArr[Math.floor(Math.random() * gifArr.length)]; //Pick a random gif from the array
+            $("#gif").attr("src", randomGif.images.original.url);              //Set the src attr of the gif element with the url
         }, function(error) {
             console.log(error);
             // dislays errors in console
@@ -334,6 +364,9 @@ $(document).ready(function(){
          while(i < 1);
         // assigns earlier empty string to joke choice variable
          pexelSearchPhrase = jokeChoice;
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     
     //joke 2 handler
@@ -367,6 +400,9 @@ $(document).ready(function(){
          while(i < 1);
          // assigns earlier empty string to joke choice variable
          pexelSearchPhrase = jokeChoice;
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     // joke 3 handler
     jokeBtnThree.on("click", function(event){
@@ -399,6 +435,9 @@ $(document).ready(function(){
          while(i < 1);
          // assigns earlier empty string to joke choice variable
          pexelSearchPhrase = jokeChoice;
+
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     // joke 4 handler
     jokeBtnFour.on("click", function(event){
@@ -437,17 +476,19 @@ $(document).ready(function(){
     //Choosing a joke return 4 pictures
     $("#modal-jokes").on("click", "a", function(event) {
         event.preventDefault();
-    
-        //The parameter will be updated
-        pexelApiQuery(pexelSearchPhrase);
+         //make the API request
+         pexelApiQuery(pexelSearchPhrase);
     });
     
     //Choosing a picture return a gif
-    $("#modal-picture").on("click", "a", function(event) {
+    //this adds a click event listener on modal-picture id specifically the img tags
+    $("#modal-picture").on("click", "img", function(event) {
         event.preventDefault();
-        //The parameter will be updated
-        let combinedQuery = moodChoice + " " + jokeChoice ;
-        // the actual gif search with the parameters we created above and combined in combinedQuery
+        //this assigns pictureChoice to the word describing the picture
+        pictureChoice = $(this).data("id");
+        //this stores a string of words from the mood. joke, and picture
+        let combinedQuery = moodChoice + " " + jokeChoice + " " + pictureChoice;
+        //this query's Giphy api with the combined words
         giphyApiQuery(combinedQuery);
     });
     
@@ -457,25 +498,21 @@ $(document).ready(function(){
         //If storage hasn't been initialized
         if (!localStorage.getItem("gifs")) 
         {
-            // gif array set to an empty array
-            let gifArr = [];
-            // pushes id and src to local storage
-            gifArr.push($("#gif").attr("src"));
-            // makes sure results are in a string
-            localStorage.setItem("gifs", JSON.stringify(gifArr));
+            let gifArr = [];                                        //Initialize the array
+            gifArr.push($("#gif").attr("src"));                     //Push the url to the array
+            localStorage.setItem("gifs", JSON.stringify(gifArr));   //Store the array in localstorage
         } else {
-            //extract the array of gifs from local storage
-            let gifArr = JSON.parse(localStorage.getItem("gifs")); 
-            gifArr.push($("#gif").attr("src"));
-            localStorage.setItem("gifs", JSON.stringify(gifArr));
+            let gifArr = JSON.parse(localStorage.getItem("gifs")); //extract the array of gifs from local storage
+            gifArr.push($("#gif").attr("src"));                     //Push the url to the array
+            localStorage.setItem("gifs", JSON.stringify(gifArr));   //Store the array in localstorage
         }
-        // resets
-        resetElements();
-        // opens gif gallery
+    
+        resetElements();    //Reset here after the user likes a gif
         openGallery();
     
     });
-    // displays gallery page when gif is "liked"
+    
+    // This function will open new page
     function openGallery() {
         window.location.assign("./gallery.html"); 
     }   
