@@ -17,13 +17,29 @@ Project Link: https://kopelson.github.io/gifYourMood/
 
 ### Interesting UX / UI
 
+![UI](https://user-images.githubusercontent.com/57735283/96472582-7f8c0d80-11e5-11eb-8a56-fcdd1e318025.gif)
+
+<p>A fun user experience/interface filled with different colors to create a temporary vibe. Designed with the CSS
+framework UI Kit and powered by jQuery.</p>
+
 ### Questionnaire
+
+![quiz](https://user-images.githubusercontent.com/57735283/96472597-8450c180-11e5-11eb-899b-d28abb5487ec.gif)
+
+<p>The user is asked to pick a mood, a joke, and a picture to find the right gif that matches the users choices.</p>
 
 ### Gallery
 
+![gallery](https://user-images.githubusercontent.com/57735283/96472601-8581ee80-11e5-11eb-8fd0-0593754f2e84.gif)
+
+<p>The user can store liked gif's in the gif gallery. Using local storage, this application renders the gallery with a 
+ history of stored gif's.</p>
+
 ### Responsive
 
+![responsive](https://user-images.githubusercontent.com/57735283/96472608-87e44880-11e5-11eb-8931-bac8e1bbd230.gif)
 
+<p>Using a grid layout designed by UI Kit this application is reponsive and looks great on any size device.</p>
 
 ## Goals
 
