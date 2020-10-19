@@ -120,3 +120,100 @@
         width: 250px;
         height: auto;
     }
+    /* This styles trash icon */
+    
+    .trashIcon {
+        color: black
+    }
+    
+    .trashIcon:hover {
+        color: rgb(221, 15, 15);
+        transform: scale(1.5);
+        /* padding: 10px; */
+    }
+    /* This styles modal-jokes backround*/
+    
+    #modal-jokes {
+        background-color: rgb(0, 0, 0);
+    }
+    /* Styles joke-modal questios */
+    
+    #joke1,
+    #joke2,
+    #joke3,
+    #joke4 {
+        font-family: 'Fredoka One', cursive;
+        color: white;
+    }
+    /* this makes the toxt pop using method transform: scale()*/
+    
+    #joke1:hover {
+        transform: scale(1.2);
+        color: rgb(244, 233, 83);
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(244, 233, 83);
+    }
+    
+    #joke2:hover {
+        transform: scale(1.2);
+        color: rgb(244, 233, 83);
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(247, 78, 89);
+    }
+    
+    #joke3:hover {
+        transform: scale(1.2);
+        color: rgb(244, 233, 83);
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(123, 240, 238);
+    }
+    
+    #joke4:hover {
+        transform: scale(1.2);
+        color: rgb(244, 233, 83);
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(145, 237, 145);
+    }
+    /* This styles modal for pictures background */
+    
+    #modal-picture {
+        background-color: rgb(0, 0, 0);
+    }
+    /* This styles pictures on :hover */
+    
+    #picture1:hover {
+        transform: scale(1.2);
+        border-style: solid;
+        border-width: 10px;
+        border-color: rgb(244, 233, 83);
+    }
+    
+    #picture2:hover {
+        transform: scale(1.2);
+        border-style: solid;
+        border-width: 10px;
+        border-color: rgb(145, 237, 145);
+    }
+    
+    #picture3:hover {
+        transform: scale(1.2);
+        border-style: solid;
+        border-width: 10px;
+        border-color: rgb(123, 240, 238);
+    }
+    
+    #picture4:hover {
+        transform: scale(1.2);
+        border-style: solid;
+        border-width: 10px;
+        border-color: rgb(247, 78, 89);
+    }
+    /* This will style background for modal-gif */
+    
+    #modal-gif {
+        background: rgb(0, 0, 0);
+    }
