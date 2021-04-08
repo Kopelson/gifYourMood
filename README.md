@@ -1,7 +1,6 @@
-# Gif Your Mood
+# Gif Your Mood :
 
-## Description
- <p>This is a purely fun application that tries to find a gif that matches the user's current mood. The user chooses an emote, a joke, and a picture to calculate and find a perfect gif. The gif can be stored in a gallery so the user can enjoy a history of liked gif's. This project was designed to practice: git work flow with four different contributors, work with the CSS framework UIkit, and use different API's to deliver a final product.</p> 
+This is a purely fun application that tries to find a gif that matches the user's current mood. The user chooses an emote, a joke, and a picture to calculate and find a perfect gif. The gif can be stored in a gallery so the user can enjoy a history of liked gif's. This project was designed to practice: git work flow with four different contributors, work with the CSS framework UIkit, and use different API's to deliver a final product.
 
 ## Table of Contents
 
